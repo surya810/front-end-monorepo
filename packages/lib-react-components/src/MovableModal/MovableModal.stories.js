@@ -35,30 +35,38 @@ const layerPositions = [
 storiesOf('MovableModal', module)
   .addDecorator(withKnobs)
 
-  .add('Light theme (default)', () => (
-    <Grommet
-      background={{
-        dark: 'dark-1',
-        light: 'light-1'
-      }}
-      theme={zooTheme}
-      themeMode='light'
-    >
-      <MovableModal
-        active={boolean('Active', true)}
-        animate={boolean('Animate layer', false)}
-        headingBackground={text('Heading background color', 'brand')}
-        closeFn={action('Close modal')}
-        pad={text('Modal body padding', 'medium')}
-        plain={boolean('Plain layer', false)}
-        position={select('Layer position', layerPositions, 'center')}
-        rndProps={object('RND props')}
-        title={text('Title', '')}
+  .add('Light theme (default)', () => {
+    const minHeight = 100
+    const minWidth = 350
+    const defaultPosition = {
+      x: 0 - (minWidth * 0.5),
+      y: 0 - minHeight
+    }
+    return (
+      <Grommet
+        background={{
+          dark: 'dark-1',
+          light: 'light-1'
+        }}
+        theme={zooTheme}
+        themeMode='light'
       >
-        {text('Content', EXAMPLE_STRING)}
-      </MovableModal>
-    </Grommet>
-  ), config)
+        <MovableModal
+          active={boolean('Active', true)}
+          animate={boolean('Animate layer', false)}
+          headingBackground={text('Heading background color', 'brand')}
+          closeFn={action('Close modal')}
+          pad={text('Modal body padding', 'medium')}
+          plain={boolean('Plain layer', false)}
+          position={select('Layer position', layerPositions, 'center')}
+          rndProps={object('RND props', { defaultPosition, minHeight, minWidth })}
+          title={text('Title', '')}
+        >
+          {text('Content', EXAMPLE_STRING)}
+        </MovableModal>
+      </Grommet>
+    )
+  }, config)
 
   .add('Dark theme', () => (
     <Grommet
@@ -77,7 +85,7 @@ storiesOf('MovableModal', module)
         pad={text('Modal body padding', 'medium')}
         plain={boolean('Plain layer', false)}
         position={select('Layer position', layerPositions, 'center')}
-        rndProps={object('RND props')}
+        rndProps={object('RND props', { defaultPosition, minHeight, minWidth })}
         title={text('Title', '')}
       >
         {text('Content', EXAMPLE_STRING)}

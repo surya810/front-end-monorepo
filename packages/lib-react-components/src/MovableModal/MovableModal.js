@@ -12,11 +12,12 @@ function MovableModal (props) {
     headingBackground,
     overflow,
     pad,
+    position,
     rndProps: {
       cancel,
       minHeight,
       minWidth,
-      position,
+      defaultPosition,
       ...restRndProps
     },
     title,
@@ -38,7 +39,7 @@ function MovableModal (props) {
         topLeft: false,
         topRight: false
       }}
-      default={position}
+      default={defaultPosition}
       minHeight={minHeight}
       minWidth={minWidth}
       handleComponent={{ bottomRight: <ResizeIcon /> }}
@@ -69,6 +70,7 @@ function MovableModal (props) {
         headingBackground={headingBackground}
         overflow={overflow}
         pad={pad}
+        position={position}
         title={title}
         titleColor={titleColor}
         {...rest}
@@ -85,7 +87,7 @@ MovableModal.defaultProps = {
   rndProps: {
     minHeight: 100,
     minWidth: 350,
-    position: {
+    defaultPosition: {
       x: 0,
       y: 0
     }
@@ -103,7 +105,7 @@ MovableModal.propTypes = {
     cancel: PropTypes.string,
     minHeight: PropTypes.number,
     minWidth: PropTypes.number,
-    position: PropTypes.shape({
+    defaultPosition: PropTypes.shape({
       x: PropTypes.number,
       y: PropTypes.number
     })

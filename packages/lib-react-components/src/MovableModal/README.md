@@ -25,14 +25,16 @@ Additional props for the `Rnd` component:
 {
   minHeight: 100,
   minWidth: 350,
-  position: {
+  defaultPosition: {
     x: 0,
     y: 0
   }
 }
 ```
 
-The props `minHeight` and `minWidth` in the object get applied to the `Rnd` `minHeight` and `minWidth` props. The `position` prop is applied to `Rnd`'s `default` prop. The object can accept any other additional props allowed by `Rnd`.
+The props `minHeight` and `minWidth` in the object get applied to the `Rnd` `minHeight` and `minWidth` props. The `defaultPosition` prop is applied to `Rnd`'s `default` prop. The object can accept any other additional props allowed by `Rnd`.
+
+Note that the x and y default position coordinate should be adjusted based on what the Grommet position is and what the min height and min width is, otherwise, the modal content may appear off-center (if positioned center) or out of view (if positioned right). The light and dark theme stories in the storybook demonstrate an example of this adjustment in the `rndProps`
 
 ## Example
 
