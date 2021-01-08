@@ -2,6 +2,7 @@ import { Box } from 'grommet'
 import makeInspectable from 'mobx-devtools-mst'
 import { Provider } from 'mobx-react'
 import App from 'next/app'
+import Error from 'next/error'
 import React from 'react'
 import { createGlobalStyle } from 'styled-components'
 
@@ -41,6 +42,14 @@ export default class MyApp extends App {
 
   render () {
     const { Component, pageProps } = this.props
+    if (pageProps.statusCode) {
+      return (
+        <Error
+          statusCode={pageProps.statusCode}
+          title={pageProps.title}
+        />
+      )
+    }
     return (
       <>
         <GlobalStyle />
