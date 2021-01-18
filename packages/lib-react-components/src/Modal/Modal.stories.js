@@ -20,7 +20,7 @@ const config = {
 
 const darkZooTheme = { ...zooTheme, dark: true }
 
-storiesOf('Modal', module)
+storiesOf('Components/Modal', module)
   .addDecorator(withKnobs)
 
   .add('Light theme (default)', () => (
